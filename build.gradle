@@ -14,7 +14,7 @@ plugins {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "0.1"
+version = "0.1.1"
 group = "atm.bloodworkxgaming.woodenflint" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "woodenflint"
 
