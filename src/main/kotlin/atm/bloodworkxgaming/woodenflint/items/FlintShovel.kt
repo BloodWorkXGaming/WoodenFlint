@@ -4,30 +4,40 @@ import atm.bloodworkxgaming.bloodyLib.registry.IHasModel
 import atm.bloodworkxgaming.woodenflint.DataRegistry
 import atm.bloodworkxgaming.woodenflint.ModConfig
 import atm.bloodworkxgaming.woodenflint.WoodenFlint
-import net.minecraft.entity.player.EntityPlayer
-import net.minecraft.item.ItemSpade
-import net.minecraft.item.ItemStack
-import net.minecraft.util.ActionResult
-import net.minecraft.util.EnumHand
+import net.minecraft.creativetab.CreativeTabs.TOOLS
+import net.minecraft.item.*
 import net.minecraft.util.ResourceLocation
-import net.minecraft.world.World
 
 class FlintShovel : ItemSpade(ToolMaterial.STONE), IHasModel {
     init {
-        this.registryName = ResourceLocation(WoodenFlint.MOD_ID, "flint_shovel")
-        this.unlocalizedName = "flint_shovel"
-
-        this.maxDamage = ModConfig.toolDurability
-        DataRegistry.ITEMS += this
+        registerMe("flint_shovel")
     }
+}
 
-    override fun onItemRightClick(worldIn: World?, playerIn: EntityPlayer?, handIn: EnumHand?): ActionResult<ItemStack> {
-        if (handIn == EnumHand.OFF_HAND) {
-            ModConfig.reload()
-        }
-
-        println("ModConfig.forceAxe = ${ModConfig.forceAxe}")
-
-        return super.onItemRightClick(worldIn, playerIn, handIn)
+class FlintAxe : ItemAxe(ToolMaterial.STONE), IHasModel {
+    init {
+        registerMe("flint_axe")
     }
+}
+
+class FlintPickaxe : ItemPickaxe(ToolMaterial.STONE), IHasModel {
+    init {
+        registerMe("flint_pickaxe")
+    }
+}
+class FlintSword : ItemSword(ToolMaterial.STONE), IHasModel {
+    init {
+        registerMe("flint_pickaxe")
+    }
+}
+
+
+fun Item.registerMe(name: String) {
+    this.registryName = ResourceLocation(WoodenFlint.MOD_ID, name)
+    this.unlocalizedName = name
+
+    this.maxDamage = ModConfig.toolDurability
+    this.creativeTab = TOOLS
+
+    DataRegistry.ITEMS += this
 }

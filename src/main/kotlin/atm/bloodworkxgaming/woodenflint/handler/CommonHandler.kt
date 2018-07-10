@@ -13,7 +13,6 @@ import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 object CommonHandler : AbstractCommonHandler(modItems = ModItems) {
-    private val names = setOf("wooden_pickaxe", "wooden_shovel", "wooden_axe", "wooden_sword")
     private val damageSource = DamageSource("pokingTrees")
 
     @SubscribeEvent
