@@ -11,6 +11,9 @@ object ModConfig {
     var toolDurability: Int = 49
 
     @JvmField
+    var disableWoodenTools: Boolean = true
+
+    @JvmField
     var forceAxe: Boolean = true
     @JvmField
     var hurtPlayer: Boolean  = true

@@ -4,6 +4,7 @@ import atm.bloodworkxgaming.bloodyLib.registry.IHasModel
 import atm.bloodworkxgaming.woodenflint.DataRegistry
 import atm.bloodworkxgaming.woodenflint.ModConfig
 import atm.bloodworkxgaming.woodenflint.WoodenFlint
+import net.minecraft.creativetab.CreativeTabs.COMBAT
 import net.minecraft.creativetab.CreativeTabs.TOOLS
 import net.minecraft.item.*
 import net.minecraft.util.ResourceLocation
@@ -28,6 +29,12 @@ class FlintPickaxe : ItemPickaxe(ToolMaterial.STONE), IHasModel {
 class FlintSword : ItemSword(ToolMaterial.STONE), IHasModel {
     init {
         registerMe("flint_sword")
+        this.creativeTab = COMBAT
+    }
+}
+class FlintHoe : ItemHoe(ToolMaterial.STONE), IHasModel {
+    init {
+        registerMe("flint_hoe")
     }
 }
 
