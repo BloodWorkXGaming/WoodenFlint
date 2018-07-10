@@ -27,7 +27,7 @@ class FlintPickaxe : ItemPickaxe(ToolMaterial.STONE), IHasModel {
 }
 class FlintSword : ItemSword(ToolMaterial.STONE), IHasModel {
     init {
-        registerMe("flint_pickaxe")
+        registerMe("flint_sword")
     }
 }
 

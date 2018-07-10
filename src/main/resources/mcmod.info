@@ -1,14 +1,14 @@
 [
 {
-  "modid": "atmtweaks",
-  "name": "ATM Tweaks",
-  "description": "Tweaks mod for the atm packs which mostly just adds items.",
+  "modid": "woodenflint",
+  "name": "Wooden Flint",
+  "description": "Because who likes punching trees.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
   "authorList": ["BloodWorkXGaming"],
-  "credits": "Ordinator for making most of the textures and coming up with the stuff",
+  "credits": "",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
