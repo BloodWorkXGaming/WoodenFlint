@@ -5,11 +5,13 @@ import atm.bloodworkxgaming.woodenflint.ModConfig
 import atm.bloodworkxgaming.woodenflint.ModItems
 import net.minecraft.block.BlockLog
 import net.minecraft.entity.item.EntityItem
+import net.minecraft.init.Blocks
 import net.minecraft.init.Items
 import net.minecraft.item.ItemStack
 import net.minecraft.util.DamageSource
 import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.event.world.BlockEvent
+import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 object CommonHandler : AbstractCommonHandler(modItems = ModItems) {
@@ -42,6 +44,13 @@ object CommonHandler : AbstractCommonHandler(modItems = ModItems) {
     fun onBlockBreak(event: BlockEvent.BreakEvent) {
         if (event.state.block.isLeaves(event.state, event.world, event.pos) && Math.random() <= ModConfig.stickDropChange) {
             event.world.spawnEntity(EntityItem(event.world, event.pos.x + 0.5, event.pos.y + 0.5, event.pos.z + 0.5, ItemStack(Items.STICK)))
+        }
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    fun onBlockDrop(event: BlockEvent.HarvestDropsEvent) {
+        if (ModConfig.disableFlintDrops && event.state.block == Blocks.GRAVEL && event.drops.any { it.item == Items.FLINT }) {
+            event.drops.replaceAll { if (it.item == Items.FLINT) ItemStack(Blocks.GRAVEL) else it }
         }
     }
 }

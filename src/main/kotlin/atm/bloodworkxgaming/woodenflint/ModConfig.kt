@@ -23,4 +23,6 @@ object ModConfig {
     var blacklistedTools: Array<String> = arrayOf("minecraft:wooden_axe")
     @JvmField
     var stickDropChange: Double = 0.1
+    @JvmField
+    var disableFlintDrops: Boolean = true
 }
