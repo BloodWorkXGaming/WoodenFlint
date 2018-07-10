@@ -1,9 +1,6 @@
 package atm.bloodworkxgaming.woodenflint
 
 import net.minecraftforge.common.config.Config
-import net.minecraftforge.common.config.Configuration
-import net.minecraftforge.common.config.Property
-import java.io.File
 
 @Config(modid = WoodenFlint.MOD_ID)
 object ModConfig {
@@ -16,7 +13,7 @@ object ModConfig {
     @JvmField
     var forceAxe: Boolean = true
     @JvmField
-    var hurtPlayer: Boolean  = true
+    var hurtPlayer: Boolean = true
     @JvmField
     var whitelistedNoneTools: Array<String> = emptyArray()
     @JvmField
@@ -25,4 +22,7 @@ object ModConfig {
     var stickDropChange: Double = 0.1
     @JvmField
     var disableFlintDrops: Boolean = true
+
+    @JvmField
+    var flintToGravel: Int = 3
 }

@@ -36,11 +36,18 @@ repositories {
     maven {
         url "http://maven.shadowfacts.net/"
     }
+
+    // Required for JEI and Mantle
+    maven {
+        name "DVS1 Maven FS"
+        url "http://dvs1.progwml6.com/files/maven"
+    }
 }
 
 
 dependencies {
     compile group: "net.shadowfacts", name: "Forgelin", version: "1.7.3"
+    deobfCompile "mezz.jei:jei_1.12.2:4.10.0.199"
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
 }

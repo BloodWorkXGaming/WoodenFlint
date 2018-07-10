@@ -26,12 +26,14 @@ class FlintPickaxe : ItemPickaxe(ToolMaterial.STONE), IHasModel {
         registerMe("flint_pickaxe")
     }
 }
+
 class FlintSword : ItemSword(ToolMaterial.STONE), IHasModel {
     init {
         registerMe("flint_sword")
         this.creativeTab = COMBAT
     }
 }
+
 class FlintHoe : ItemHoe(ToolMaterial.STONE), IHasModel {
     init {
         registerMe("flint_hoe")

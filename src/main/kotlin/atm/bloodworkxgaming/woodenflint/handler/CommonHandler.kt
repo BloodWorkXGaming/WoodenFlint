@@ -3,16 +3,21 @@ package atm.bloodworkxgaming.woodenflint.handler
 import atm.bloodworkxgaming.bloodyLib.util.AbstractCommonHandler
 import atm.bloodworkxgaming.woodenflint.ModConfig
 import atm.bloodworkxgaming.woodenflint.ModItems
+import atm.bloodworkxgaming.woodenflint.WoodenFlint
 import net.minecraft.block.BlockLog
 import net.minecraft.entity.item.EntityItem
 import net.minecraft.init.Blocks
 import net.minecraft.init.Items
 import net.minecraft.item.ItemStack
+import net.minecraft.item.crafting.IRecipe
 import net.minecraft.util.DamageSource
+import net.minecraft.util.ResourceLocation
+import net.minecraftforge.event.RegistryEvent
 import net.minecraftforge.event.entity.player.PlayerEvent
 import net.minecraftforge.event.world.BlockEvent
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import net.minecraftforge.oredict.ShapelessOreRecipe
 
 object CommonHandler : AbstractCommonHandler(modItems = ModItems) {
     private val damageSource = DamageSource("pokingTrees")
@@ -51,6 +56,20 @@ object CommonHandler : AbstractCommonHandler(modItems = ModItems) {
     fun onBlockDrop(event: BlockEvent.HarvestDropsEvent) {
         if (ModConfig.disableFlintDrops && event.state.block == Blocks.GRAVEL && event.drops.any { it.item == Items.FLINT }) {
             event.drops.replaceAll { if (it.item == Items.FLINT) ItemStack(Blocks.GRAVEL) else it }
+        }
+    }
+
+    @SubscribeEvent
+    fun onRecipeEvent(event: RegistryEvent.Register<IRecipe>) {
+        val l = mutableListOf<String>()
+        if (ModConfig.flintToGravel > 0) {
+            for (i in 1..ModConfig.flintToGravel)
+                l.add("gravel")
+
+            event.registry.register(ShapelessOreRecipe(
+                    ResourceLocation(WoodenFlint.MOD_ID, "flint_gravel"),
+                    Items.FLINT,
+                    *l.toTypedArray()).setRegistryName(ResourceLocation(WoodenFlint.MOD_ID, "flint_gravel")))
         }
     }
 }
